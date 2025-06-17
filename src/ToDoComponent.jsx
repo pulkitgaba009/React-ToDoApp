@@ -13,7 +13,8 @@ function ToDoComponent(){
 
     let addNewTask = ()=>{
     setToDo([...toDo,newToDo])
-}
+    setNewToDo("")
+    }
 
     let updateToDo =(event)=>{
     setNewToDo(event.target.value)
