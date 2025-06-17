@@ -1,4 +1,5 @@
 import { useState } from "react"
+import {v4 as uuidv4} from "uuid"
 
 let inputBtnStyle = {
     height:"2.25rem",
@@ -8,11 +9,11 @@ let inputBtnStyle = {
 
 function ToDoComponent(){
 
-    let [toDo,setToDo] = useState(["Sample task"])
+    let [toDo,setToDo] = useState([{task:"Sample task",id:uuidv4()}])
     let [newToDo,setNewToDo] = useState("")
 
     let addNewTask = ()=>{
-    setToDo([...toDo,newToDo])
+    setToDo([...toDo,{task:newToDo,id:uuidv4()}])
     setNewToDo("")
     }
 
@@ -33,7 +34,7 @@ function ToDoComponent(){
             <h4>To Do list:</h4>
             <ul>{
                 toDo.map((toDo)=>{
-                  return <li>{toDo}</li>
+                  return <li key={toDo.id}>{toDo.task}</li>
                 })
             }
             </ul>
