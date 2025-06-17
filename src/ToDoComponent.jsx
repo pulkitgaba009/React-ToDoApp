@@ -13,12 +13,20 @@ function ToDoComponent(){
     let [newToDo,setNewToDo] = useState("")
 
     let addNewTask = ()=>{
-    setToDo([...toDo,{task:newToDo,id:uuidv4()}])
+    setToDo((prevTodo)=>{
+        return [...prevTodo,{task:newToDo,id:uuidv4()}]
+    })
+    
     setNewToDo("")
     }
 
     let updateToDo =(event)=>{
     setNewToDo(event.target.value)
+    }
+
+    let deleteTodo = (id) =>{
+        let copy = (toDo.filter((toDo)=> toDo.id != id));
+        setToDo(copy)
     }
 
     return(
@@ -34,7 +42,9 @@ function ToDoComponent(){
             <h4>To Do list:</h4>
             <ul>{
                 toDo.map((toDo)=>{
-                  return <li key={toDo.id}>{toDo.task}</li>
+                  return <li key={toDo.id}>
+                  <span>{toDo.task} <button onClick={()=>deleteTodo(toDo.id)}>Delete</button></span>
+                  </li>
                 })
             }
             </ul>
