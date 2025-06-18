@@ -16,9 +16,20 @@ function ToDoComponent(){
     setToDo((prevTodo)=>{
         return [...prevTodo,{task:newToDo,id:uuidv4()}]
     })
-    
     setNewToDo("")
     }
+
+   let upperCaseAll = () => {
+    setToDo(
+        toDo.map((todo) => {
+            return {
+                ...todo,
+                task: todo.task.toUpperCase()
+            };
+        })
+    );
+};
+
 
     let updateToDo =(event)=>{
     setNewToDo(event.target.value)
@@ -48,6 +59,8 @@ function ToDoComponent(){
                 })
             }
             </ul>
+
+            <button onClick={upperCaseAll}>Update All</button>
         </div>
     )
 }
