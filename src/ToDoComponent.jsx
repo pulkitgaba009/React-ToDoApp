@@ -19,6 +19,7 @@ function ToDoComponent(){
     setNewToDo("")
     }
 
+
    let upperCaseAll = () => {
     setToDo(
         toDo.map((todo) => {
